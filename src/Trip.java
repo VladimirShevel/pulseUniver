@@ -16,9 +16,7 @@ public class Trip implements Runnable {
 
     public void changePassengers(Train train, Station station) {
         for (Wagon wagon : train.getWagons()) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
+
                     if (!wagon.wagonPassengers.isEmpty())
                         for (int i = 0; i < (int) (wagon.wagonPassengers.size() * 0.8); i++) {
                             station.arrivedPassengers.add(wagon.wagonPassengers.remove(i));
@@ -28,29 +26,22 @@ public class Trip implements Runnable {
                             wagon.wagonPassengers.add(station.departingPassengers.remove(i));
                         }
                 }
-            }).start();
-        }
+
     }
 
     @Override
     public void run() {
         for (Station station : line.getStationList()) {
             train.moveTrain();
-            if (station.haveTrain) try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            else {
-                station.haveTrain = true;
+            station.haveTrain = true;
                 changePassengers(train, station);
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+               }
                 station.haveTrain = false;
-            }
+
         }
     }
 }

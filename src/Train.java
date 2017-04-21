@@ -40,6 +40,7 @@ public class Train {
     public void moveTrain(){
         try {
             Thread.sleep(1000 * (int) (Math.random() * 3 + 1));
+            System.out.println(this + "GFFFFFFFF");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

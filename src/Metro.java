@@ -95,6 +95,8 @@ public class Metro {
      //       System.out.println(train);
 
         for (Train train1 : trainList)
+
+       //   Train train1 = trainList.get(0);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -108,14 +110,16 @@ public class Metro {
                               }
                               else driver = driverses.poll();} while (driver==null);
                         }
-//                        Thread trip = new Thread(new Trip(train1, line1, driver));
-//                        trip.start();
-//                        trip.join();
+                       // Thread.sleep(1000);
+
                         //driver.tripsCounter++;
                         train1.setDriver(driver);
                        // System.out.print(driver.getName() + " ");
-                        System.out.println(driver + " едет на поезде " + train1);
-                        Thread.sleep(1000 * (int) (Math.random() * 3 + 1));
+                        System.out.println(Thread.currentThread().getName() + " " + driver + " едет на поезде " + train1);
+                        Thread trip = new Thread(new Trip(train1, line1, driver));
+                        trip.start();
+                        trip.join();
+                        //Thread.sleep(1000 * (int) (Math.random() * 3 + 1));
                         synchronized (driverses) {
                             driver.setSciles();
                             driverses.add(driver);driverses.notifyAll();

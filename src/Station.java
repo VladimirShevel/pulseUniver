@@ -13,6 +13,10 @@ public class Station {
 
     public Station(String name) {
         this.name = name;
+        this.departingPassengers= new ArrayList<Passenger>();
+        this.arrivedPassengers = new ArrayList<Passenger>();
+        this.vestibuleOutPassengers = new ArrayList<Passenger>();
+        this.vestibuleInPassengers = new ArrayList<Passenger>();
     }
 
     @Override
