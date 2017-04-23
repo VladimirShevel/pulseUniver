@@ -1,15 +1,18 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by Vladimir on 18.03.2017.
  */
 public class Wagon {
     public int wagonID;
-  //  public int capacity;
-    public ArrayList<Passenger> wagonPassengers;
+    public static int maxCapacity = 20;
+    public List<Passenger> wagonPassengers;
+
     public Wagon(int wagonID) {
         this.wagonID = wagonID;
-        this.wagonPassengers = new ArrayList<Passenger>();
+        this.wagonPassengers = Collections.synchronizedList(new ArrayList<Passenger>());
     }
 
     //public int getCapacity() {
@@ -27,7 +30,7 @@ public class Wagon {
     @Override
     public String toString() {
 
-        return "|[" + wagonID + "]|";
+        return "|[" + wagonID + ":" + wagonPassengers.size() + ":]|";
     }
 }
 

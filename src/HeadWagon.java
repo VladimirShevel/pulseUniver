@@ -8,6 +8,6 @@ public class HeadWagon extends Wagon {
 
     @Override
     public String toString() {
-        return "<|[" + wagonID + "]|>";
+        return "<|[" + wagonID + ":" + wagonPassengers.size() + ":]|>";
     }
 }

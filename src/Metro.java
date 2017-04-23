@@ -94,9 +94,9 @@ public class Metro {
    //     for (Train train : trainList)
      //       System.out.println(train);
 
-        for (Train train1 : trainList)
+       // for (Train train1 : trainList)
 
-       //   Train train1 = trainList.get(0);
+          Train train1 = trainList.get(0);
             new Thread(new Runnable() {
                 @Override
                 public void run() {
